@@ -43,11 +43,8 @@ const Coffee = (props) => {
       >
         <Skeleton loading={loading} avatar active>
           <Meta
-            avatar={
-              data ? <Avatar src="https://joeschmoe.io/api/v1/random" /> : "None"
-            }
-            title={data ? data : "NO DATA RETRIEVABLE "}
-            description={error ? error : props.coffee}
+            title={props.coffee}
+            description={data ? data : error}
           />
           <div>
             <Rate allowHalf defaultValue={2.5} disabled="true" />
