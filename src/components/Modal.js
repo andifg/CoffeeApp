@@ -13,6 +13,7 @@ const AddModal = (props) => {
       setModalText("Thanks, your input is getting stored");
       setConfirmLoading(true);
       const values = await form.validateFields();
+      console.log(values)
       props.addCoffee(values.coffeename);
       setTimeout(() => {
         setVisible(false);
@@ -34,6 +35,10 @@ const AddModal = (props) => {
     setVisible(false);
   };
 
+  const submitForm = ()=>{
+    form.submit()
+  }
+
   return (
     <>
       <Button type="primary" onClick={showModal}>
@@ -42,11 +47,11 @@ const AddModal = (props) => {
       <Modal
         title="Title"
         visible={visible}
-        onOk={handleOk}
+        onOk={submitForm}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
       >
-        <AddForm form={form} preHandleOk={handleOk} />
+        <AddForm form={form} handleOk={handleOk} />
         {modalText && <p>{modalText}</p>}
       </Modal>
     </>
