@@ -1,20 +1,24 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Button } from "antd";
-import Coffee from "./Coffee";
+import Coffee from "./Coffee/Coffee";
+import AddModal from "./Modal";
 
 const Board = () => {
-  const [coffees, setCoffess] = useState([1,2,3])
-  console.log(coffees)
+  const [coffees, setCoffess] = useState(["Aribica"]);
+
+  const addCoffee = (newCoffee) => {
+    setCoffess((prevState) => [...prevState, newCoffee]);
+    console.log(coffees);
+  };
+
   return (
     <div className="board-wrapper">
       <div className="board-add-icon">
-        <Button type="primary">Add</Button>
+        <AddModal addCoffee={addCoffee} />
       </div>
-        {
-            coffees.map((coffee)=>(
-            <Coffee key={coffee} />
-        ))}
+      {coffees.map((coffee) => (
+        <Coffee key={coffee} name={coffee} />
+      ))}
     </div>
   );
 };
