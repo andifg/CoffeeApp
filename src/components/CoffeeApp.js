@@ -2,10 +2,10 @@ import React from "react";
 import Navbar from "./Navbar";
 import Board from "./Board";
 
-const CoffeeApp = (props) => (
+const CoffeeApp = () => (
   <>
-  <Navbar />
-  <Board />
+    <Navbar />
+    <Board />
   </>
 );
 
