@@ -4,7 +4,8 @@ import Coffee from "./Coffee/Coffee";
 import AddModal from "./Modal";
 
 const Board = () => {
-  const [coffees, setCoffess] = useState(["Aribica"]);
+  const [coffees, setCoffess] = useState(["Arabica"]);
+  const [disableAdd, setdisableAdd] = useState(false)
 
   const addCoffee = (newCoffee) => {
     setCoffess((prevState) => [...prevState, newCoffee]);
@@ -26,10 +27,10 @@ const Board = () => {
   return (
     <div className="board-wrapper">
       <div className="board-add-icon">
-        <AddModal addCoffee={addCoffee} />
+        <AddModal addCoffee={addCoffee} disableAdd={disableAdd}  />
       </div>
       {coffees.map((coffee) => (
-        <Coffee key={coffee} coffee={coffee} deleteCoffee={deleteCoffee} />
+        <Coffee key={coffee} coffee={coffee} deleteCoffee={deleteCoffee} setdisableAdd={setdisableAdd} />
       ))}
     </div>
   );

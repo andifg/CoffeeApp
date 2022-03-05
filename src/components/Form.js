@@ -2,7 +2,6 @@ import React from "react";
 import { Form, Input, Rate } from "antd";
 
 const AddForm = (props) => {
-  const [nameCheck, setnameCheck] = React.useState(true);
 
   const checkCoffeeName = (_, value) => {
     if (!value) {
