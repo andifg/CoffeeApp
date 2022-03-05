@@ -1,8 +1,8 @@
 import { Card, Avatar, Skeleton, Rate } from "antd";
 import {
   EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
+  DeleteOutlined
+
 } from "@ant-design/icons";
 import React from "react";
 import { useState, useEffect } from "react";
@@ -18,7 +18,6 @@ const Coffee = (props) => {
   useEffect(async () => {
     try {
       const data = await getName();
-
       setData(data);
     } catch (e) {
       setError(e.message);
@@ -38,9 +37,8 @@ const Coffee = (props) => {
           />
         }
         actions={[
-          <SettingOutlined key="setting" />,
           <EditOutlined key="edit" />,
-          <EllipsisOutlined key="ellipsis" />,
+          <DeleteOutlined key="delete" onClick={(e)=> {props.deleteCoffee(props.coffee)}} />
         ]}
       >
         <Skeleton loading={loading} avatar active>
@@ -49,7 +47,7 @@ const Coffee = (props) => {
               data ? <Avatar src="https://joeschmoe.io/api/v1/random" /> : "None"
             }
             title={data ? data : "NO DATA RETRIEVABLE "}
-            description={error ? error : props.name}
+            description={error ? error : props.coffee}
           />
           <div>
             <Rate allowHalf defaultValue={2.5} disabled="true" />
