@@ -23,32 +23,26 @@ const Coffee = (props) => {
     }
   }, []);
 
+  const saveChanges = (e) => {
+    setEdit(false);
+    props.seteditCoffee(false);
+  };
+
+  const editCard = (e) => {
+    setEdit(true);
+    props.seteditCoffee(true);
+  };
+
+  const delteCard = (e) => {
+    props.deleteCoffee(props.coffee);
+  };
   const getActions = () => {
     if (edit) {
-      return [
-        <SaveOutlined
-          key="saveChanges"
-          onClick={(e) => {
-            setEdit(false);
-            props.setdisableAdd(false)
-          }}
-        />,
-      ];
+      return [<SaveOutlined key="saveChanges" onClick={saveChanges} />];
     }
     return [
-      <EditOutlined
-        key="edit"
-        onClick={(e) => {
-          setEdit(true);
-          props.setdisableAdd(true)
-        }}
-      />,
-      <DeleteOutlined
-        key="delete"
-        onClick={(e) => {
-          props.deleteCoffee(props.coffee);
-        }}
-      />,
+      <EditOutlined key="edit" onClick={!edit && !props.editCoffee ? editCard : ""} />,
+      <DeleteOutlined key="delete" onClick={!edit && !props.editCoffee ? delteCard :""} />,
     ];
   };
 
@@ -68,7 +62,7 @@ const Coffee = (props) => {
           <Meta title={props.coffee} />
           <div>
             <Rate allowHalf defaultValue={2.5} disabled={!edit} />
-            {edit && <p>Change the Rating here</p> }
+            {edit && <p>Change the Rating here</p>}
           </div>
         </Skeleton>
       </Card>
