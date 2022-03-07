@@ -41,7 +41,7 @@ const AddModal = (props) => {
 
   return (
     <>
-      <Button type="primary" onClick={showModal} disabled={props.disableAdd}>
+      <Button type="primary" onClick={showModal} disabled={props.editCoffee}>
         Add
       </Button>
       <Modal
