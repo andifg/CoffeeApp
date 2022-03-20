@@ -1,25 +1,26 @@
 import express, { Application, Request, Response } from "express";
+import { setgroups } from "process";
+import { createConnection } from "typeorm";
+import routes from "./routes/index";
 
-const app: Application = express();
-const port = 3000;
 
-// Body parsing Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+( async () => {
+  try {
+    const app: Application = express();
+    const port = 3000;
 
-app.get(
-    "/",
-    async (req: Request, res: Response): Promise<Response> => {
-        return res.status(200).send({
-            message: "Hello World!",
-        });
-    }
-);
+    // Body parsing Middleware
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
 
-try {
+    app.use("/", routes);
+
+    await createConnection();
+
     app.listen(port, (): void => {
-        console.log(`Connected successfully on port ${port}`);
+      console.log(`Connected successfully on port ${port}`);
     });
-} catch (error) {
+  } catch (error) {
     console.error(`Error occured: ${error}`);
-}
+  }
+})();
