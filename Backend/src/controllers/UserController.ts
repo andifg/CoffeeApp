@@ -44,6 +44,10 @@ class UserController {
     //If all ok, send 201 response
     res.status(201).send("User created");
   };
+  static getUser = async (req: Request, res: Response) => {
+    console.log(res.locals.jwtPayload)
+    res.send(200)
+  };
 }
 
 export default UserController;

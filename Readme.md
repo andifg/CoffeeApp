@@ -3,16 +3,40 @@
 Frontend part of an app to rate different coffee beans and the resulting espressos.
 
 
-## Prerequisites
+## Frontend
+
+### Prerequisites
 Yarn available in your environment. To install dependencies:
 ```
 yarn innstall
 ```
 
-##  Dev-Server
+###  Dev-Server
 ```
 yarn run dev-server
 ```
 
-## Prod deployment
+### Prod deployment
 do be defined ...
+
+
+## Backend
+
+### Prerequisites
+Yarn available in your environment. To install dependencies:
+```
+npm innstall
+```
+
+###  Dev-Server
+```
+npm run start
+```
+
+
+## Database
+Deployed as docker-compose postgres container
+
+```
+docker-compose up -d
+```
