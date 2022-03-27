@@ -46,7 +46,7 @@ class UserController {
   };
   static getUser = async (req: Request, res: Response) => {
     console.log(res.locals.jwtPayload)
-    res.send(200)
+    res.sendStatus(200)
   };
 }
 

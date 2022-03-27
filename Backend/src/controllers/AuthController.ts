@@ -24,7 +24,7 @@ class AuthController {
 
     //Check if encrypted password match
     if (!user.checkIfUnencryptedPasswordIsValid(password)) {
-      res.status(401).send();
+      res.sendStatus(401);
       return;
     }
 
@@ -39,9 +39,11 @@ class AuthController {
     var decode =  jwt.verify(token, process.env.JWTSECRET);
 
     console.log(decode)
-
+    res
+    .cookie('access_token', token)
     //Send the jwt in the response
-    res.send({token:token});
+    .status(200)
+    .send("Login successfull")
   };
 
 }
